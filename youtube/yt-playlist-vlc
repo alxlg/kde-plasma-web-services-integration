@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# input: YouTube playlist URL
+# * use youtube-dl to print the URLs of each video in the playlist
+# * use VLC to play them
+#
+# dependencies:
+# * youbube-dl
+# * VLC in single instance mode and 'append videos in single instance mode' option enabled
+# * VLC addon to play YouTube videos https://addons.videolan.org/content/show.php/+Youtube+playlist?content=149909
+
+for i in `youtube-dl -o "http://www.youtube.com/watch?v=%(id)s" --get-filename "$1"`
+do
+    vlc $i
+done
